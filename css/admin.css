@@ -14,7 +14,7 @@
       letter-spacing: -1px;
   }
   a {
-    color: #188bff;
+    color: var(--mainColor);
     text-decoration: unset;
   }
   .login-root {
@@ -151,7 +151,7 @@
   }
   
   input[type="submit"] {
-      background-color: #188bff;
+      background-color: var(--mainColor);
       box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, 

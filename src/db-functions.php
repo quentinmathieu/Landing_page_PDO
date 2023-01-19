@@ -51,23 +51,23 @@ function findOneById($id)
     return $product;
 }
 
-// function insertProduct(string $name, string $descr, float $price)
-// {
-//     if (session_status() == PHP_SESSION_NONE) {
+function UpdatePricing(string $name, string $descr, float $price)
+{
+    if (session_status() == PHP_SESSION_NONE) {
 
-//         session_start();
-//     }
-//     $db = connexion();
+        session_start();
+    }
+    $db = connexion();
 
 
-//         $sql = "INSERT INTO product(name, description, price) VALUES (:name, :descr, :price)";
+        $sql = "INSERT INTO product(name, description, price) VALUES (:name, :descr, :price)";
 
-//         $stmt = $db->prepare($sql);
+        $stmt = $db->prepare($sql);
 
-//         $stmt->bindValue(':name', $name);
-//         $stmt->bindValue(':descr', $descr);
-//         $stmt->bindValue(':price', $price);
-//         $stmt->execute();
-//         return;
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':descr', $descr);
+        $stmt->bindValue(':price', $price);
+        $stmt->execute();
+        return;
     
-// }
+}

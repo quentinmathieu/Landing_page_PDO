@@ -58,7 +58,7 @@ require_once('src/db-functions.php');
                             <li><a href="#team">About</a></li>
                             <li><a href="#blog">Blog</a></li>
                             <li><a href="#contact">Contact</a></li>
-                            <li><a href="/src/admin.php">Admin</a></li>
+                            <li><a href="src/admin.php">Admin</a></li>
                         </ul>
                     </nav>
 

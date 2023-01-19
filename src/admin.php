@@ -2,8 +2,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Stackfindover: Sign in</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <title>Update</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
 </head>
 
 <body>
@@ -12,8 +14,7 @@
             <div class="loginbackground box-background--white padding-top--64">
                 <div class="loginbackground-gridContainer">
                     <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
-                        <div class="box-root"
-                            style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                        <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
                         </div>
                     </div>
                     <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
@@ -51,165 +52,78 @@
                 <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
                     <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Update Pricing</a></h1>
                 </div>
-                    <div class="formbg-outer" style="display:flex">
-                        <div class="formbg">
-                            <div class="formbg-inner padding-horizontal--48">
-                                <form id="stripe-login">
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="name">Name</label>
-                                            <input type="text" name="Name" value="Starter">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Price</label>
-                                            <input type="email" name="email" value="19">
-                                        </div>
-                                    </div>
-                                    <div class="line">
+                <div class="formbg-outer" style="display:flex">
+                    <?php
+                    session_start();
+                    require_once("db-functions.php");
+                    $pricings = findAll();
+                    foreach ($pricings as $indexPricing => $pricing) {
+                        echo '<div class="formbg">',
+                        '<div class="formbg-inner padding-horizontal--48">',
+                        '<form id="stripe-login" action="functions.php?action=update&id=' . $pricing['id'] . '" method="POST">';
 
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Sale</label>
-                                            <input type="email" name="email" value="20">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Bandwidth</label>
-                                            <input type="email" name="email" value="2">
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">OnlineSpace</label>
-                                            <input type="email" name="email" value="1">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Support</label>
-                                            <input type="email" name="email" value="true">
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Domain</label>
-                                            <input type="email" name="email" value="3">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Hidden Fees</label>
-                                            <input type="email" name="email" value="false">
-                                        </div>
-                                    </div>
+                        $count = 0;
+                    ?>
+                        <div class="line">
+                            <div class="field padding-bottom--24">
+                                <label for="Name">Name</label>
+                                <input type="text" id="Name" name="Name" value="<?= $pricing["Name"] ?>">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                    <label for="Sale">Sale</label>
+                                    <input type="number" id="Sale" name="Sale" value="<?= $pricing["Sale"] ?>">
+                                </div>
+                        </div>
+                        <div class="line">
 
-                                    <div class="field padding-bottom--24">
-                                        <input type="submit" name="submit" value="Update">
-                                    </div>
-
-                                </form>
+                            <div class="field padding-bottom--24">
+                                <label for="Price">Price </label>
+                                <input type="number" id="Price" name="Price" value="<?= $pricing["Price"] ?>">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="Bandwidth">Bandwidth</label>
+                                <input type="number" id="Bandwidth" name="Bandwidth" value="<?= $pricing["Bandwidth"] ?>">
                             </div>
                         </div>
-                        <div class="formbg">
-                            <div class="formbg-inner padding-horizontal--48">
-                                <form id="stripe-login">
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Name</label>
-                                            <input type="email" name="email" value="Advanced">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Price</label>
-                                            <input type="email" name="email" value="19">
-                                        </div>
-                                    </div>
-                                    <div class="line">
+                        <div class="line">
 
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Sale</label>
-                                            <input type="email" name="email" value="20">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Bandwidth</label>
-                                            <input type="email" name="email" value="2">
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">OnlineSpace</label>
-                                            <input type="email" name="email" value="1">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Support</label>
-                                            <input type="email" name="email" value="true">
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Domain</label>
-                                            <input type="email" name="email" value="3">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Hidden Fees</label>
-                                            <input type="email" name="email" value="false">
-                                        </div>
-                                    </div>
-
-                                    <div class="field padding-bottom--24">
-                                        <input type="submit" name="submit" value="Update">
-                                    </div>
-
-                                </form>
+                            <div class="field padding-bottom--24">
+                                <label for="Onlinespace">Onlinespace </label>
+                                <input type="number" id="Onlinespace" name="Onlinespace" value="<?= $pricing["Onlinespace"] ?>">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="Support">Support</label>
+                                <input type="number" id="Support" name="Support" value="<?= $pricing["Support"] ?>" min="0" max="1">
                             </div>
                         </div>
-                        <div class="formbg">
-                            <div class="formbg-inner padding-horizontal--48">
-                                <form id="stripe-login">
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Name</label>
-                                            <input type="email" name="email" value="Professional">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Price</label>
-                                            <input type="email" name="email" value="19">
-                                        </div>
-                                    </div>
-                                    <div class="line">
+                        <div class="line">
 
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Sale</label>
-                                            <input type="email" name="email" value="20">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Bandwidth</label>
-                                            <input type="email" name="email" value="2">
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">OnlineSpace</label>
-                                            <input type="email" name="email" value="1">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Support</label>
-                                            <input type="email" name="email" value="true">
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Domain</label>
-                                            <input type="email" name="email" value="3">
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label for="email">Hidden Fees</label>
-                                            <input type="email" name="email" value="false">
-                                        </div>
-                                    </div>
-
-                                    <div class="field padding-bottom--24">
-                                        <input type="submit" name="submit" value="Update">
-                                    </div>
-
-                                </form>
+                            <div class="field padding-bottom--24">
+                                <label for="Domain">Domain </label>
+                                <input type="text" id="Domain" name="Domain" value="<?= $pricing["Domain"] ?>">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="HiddenFees">HiddenFees</label>
+                                <input type="number" id="HiddenFees" name="HiddenFees"  min="0" max="1"value="<?= $pricing["HiddenFees"] ?>" >
                             </div>
                         </div>
-                    </div>
-               
+                    <?php
+
+
+
+
+
+                        echo '<div class="field padding-bottom--24">
+                        <input type="submit" name="submit" value="Update">
+                    </div>', '</form>',
+                        '</div>',
+                        '</div>';
+                    }
+
+                    ?>
+
+                </div>
+
             </div>
         </div>
     </div>
