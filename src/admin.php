@@ -10,8 +10,17 @@
 
 <body>
     <div class="login-root">
+
         <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
-            <div class="loginbackground box-background--white padding-top--64">
+            <div class="loginbackground box-background--white padding-top--32" style="text-align : center">
+                <?php
+                session_start();
+                require_once("db-functions.php");
+                $pricings = findAll();
+                $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : "";
+                echo $message;
+
+                ?>
                 <div class="loginbackground-gridContainer">
                     <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
                         <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
@@ -54,9 +63,7 @@
                 </div>
                 <div class="formbg-outer" style="display:flex">
                     <?php
-                    session_start();
-                    require_once("db-functions.php");
-                    $pricings = findAll();
+
                     foreach ($pricings as $indexPricing => $pricing) {
                         echo '<div class="formbg">',
                         '<div class="formbg-inner padding-horizontal--48">',
@@ -70,16 +77,17 @@
                                 <input type="text" id="Name" name="Name" value="<?= $pricing["Name"] ?>">
                             </div>
                             <div class="field padding-bottom--24">
-                                    <label for="Sale">Sale</label>
-                                    <input type="number" id="Sale" name="Sale" value="<?= $pricing["Sale"] ?>">
-                                </div>
-                        </div>
-                        <div class="line">
-
-                            <div class="field padding-bottom--24">
                                 <label for="Price">Price </label>
                                 <input type="number" id="Price" name="Price" value="<?= $pricing["Price"] ?>">
                             </div>
+
+                        </div>
+                        <div class="line">
+                            <div class="field padding-bottom--24">
+                                <label for="Sale">Sale</label>
+                                <input type="number" id="Sale" name="Sale" value="<?= $pricing["Sale"] ?>">
+                            </div>
+
                             <div class="field padding-bottom--24">
                                 <label for="Bandwidth">Bandwidth</label>
                                 <input type="number" id="Bandwidth" name="Bandwidth" value="<?= $pricing["Bandwidth"] ?>">
@@ -104,7 +112,7 @@
                             </div>
                             <div class="field padding-bottom--24">
                                 <label for="HiddenFees">HiddenFees</label>
-                                <input type="number" id="HiddenFees" name="HiddenFees"  min="0" max="1"value="<?= $pricing["HiddenFees"] ?>" >
+                                <input type="number" id="HiddenFees" name="HiddenFees" min="0" max="1" value="<?= $pricing["HiddenFees"] ?>">
                             </div>
                         </div>
                     <?php

@@ -11,24 +11,24 @@ case 'update':
     if(isset($_POST['submit'])){
         
         $dbName = filter_input(INPUT_POST, "Name", FILTER_SANITIZE_SPECIAL_CHARS);
-        $dbPrice = filter_input(INPUT_POST,"Price", FILTER_SANITIZE_SPECIAL_CHARS );
-        $dbSale = filter_input(INPUT_POST, "Sale",  FILTER_SANITIZE_SPECIAL_CHARS);
-        $dbBandwidth = filter_input(INPUT_POST, "Bandwidth",  FILTER_SANITIZE_SPECIAL_CHARS);
-        $dbOnlinespace = filter_input(INPUT_POST, "Onlinespace",  FILTER_SANITIZE_SPECIAL_CHARS);
-        $dbSupport = filter_input(INPUT_POST, "Support",  FILTER_SANITIZE_SPECIAL_CHARS);
-        $dbHiddenfees = filter_input(INPUT_POST, "HiddenFees",  FILTER_SANITIZE_SPECIAL_CHARS);
+        $dbPrice = filter_input(INPUT_POST,"Price", FILTER_SANITIZE_NUMBER_FLOAT);
+        $dbSale = filter_input(INPUT_POST, "Sale",  FILTER_SANITIZE_NUMBER_INT);
+        $dbBandwidth = filter_input(INPUT_POST, "Bandwidth",  FILTER_SANITIZE_NUMBER_INT);
+        $dbOnlinespace = filter_input(INPUT_POST, "Onlinespace",  FILTER_SANITIZE_NUMBER_INT);
+        $dbSupport = filter_input(INPUT_POST, "Support",  FILTER_SANITIZE_NUMBER_INT);
         $dbDomain = filter_input(INPUT_POST, "Domain", FILTER_SANITIZE_SPECIAL_CHARS);
+        $dbHiddenfees = filter_input(INPUT_POST, "HiddenFees",  FILTER_SANITIZE_SPECIAL_CHARS);
         
-        // var_dump($dbPrice);die;
-        if ($dbName && $dbPrice && $dbSale && $dbBandwidth && $dbOnlinespace && $dbSupport && $dbHiddenfees && $dbDomain){
-            echo 'test'; die;
-            UpdatePricing($dbName, $dbDescr, $dbPrice);
-            header("Location:admin.php?article=" . $dbName);
+        if (isset($dbName)  && isset( $dbPrice ) && isset( $dbSale ) && isset( $dbBandwidth ) && isset( $dbOnlinespace ) && isset( $dbSupport ) && isset( $dbHiddenfees ) && isset( $dbDomain)){
+            UpdatePricing($dbName ,  $dbPrice ,  $dbSale ,  $dbBandwidth ,  $dbOnlinespace ,  $dbSupport ,  $dbHiddenfees ,  $dbDomain, $id);
+            $_SESSION['message'] = "<p>success</p>";
+            header("Location:admin.php");
+            die;
             
         }
         else{
-            echo 'none'; die;
-            // header("Location:admin.php?article=");
+            $_SESSION['message'] = "<p>error</p>";
+            header("Location:admin.php");
     
         }
     }

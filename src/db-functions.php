@@ -51,22 +51,26 @@ function findOneById($id)
     return $product;
 }
 
-function UpdatePricing(string $name, string $descr, float $price)
+function UpdatePricing($dbName ,  $dbPrice ,  $dbSale ,  $dbBandwidth ,  $dbOnlinespace ,  $dbSupport ,  $dbHiddenfees ,  $dbDomain, $id)
 {
-    if (session_status() == PHP_SESSION_NONE) {
-
-        session_start();
-    }
+   
     $db = connexion();
 
 
-        $sql = "INSERT INTO product(name, description, price) VALUES (:name, :descr, :price)";
+        $sql = "UPDATE pricing
+        Set Name = :Name, Price = :Price, Sale = :Sale, Bandwidth = :Bandwidth, Onlinespace=:Onlinespace, Support=:Support, HiddenFees=:HiddenFees, Domain=:Domain
+        WHERE id= :id";
 
         $stmt = $db->prepare($sql);
-
-        $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':descr', $descr);
-        $stmt->bindValue(':price', $price);
+        $stmt->bindValue(':Name', $dbName);
+        $stmt->bindValue(':Price', $dbPrice);
+        $stmt->bindValue(':Sale', $dbSale);
+        $stmt->bindValue(':Bandwidth', $dbBandwidth);
+        $stmt->bindValue(':Onlinespace', $dbOnlinespace);
+        $stmt->bindValue(':Support', $dbSupport);
+        $stmt->bindValue(':HiddenFees', $dbHiddenfees);
+        $stmt->bindValue(':Domain', $dbDomain);
+        $stmt->bindValue(':id', $id);
         $stmt->execute();
         return;
     
