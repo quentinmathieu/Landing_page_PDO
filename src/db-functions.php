@@ -1,5 +1,4 @@
 <?php
-
 function connexion()
 
 {
@@ -29,7 +28,8 @@ function findAll()
     $products = [];
     $sql = "SELECT *
             FROM
-                pricing";
+                pricing
+                LIMIT 3";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $products = $stmt->fetchAll();

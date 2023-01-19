@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once('src/db-functions.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,11 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ------------ CSS ------------ -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
+
     <title>Beep</title>
 </head>
 
@@ -54,6 +58,7 @@
                             <li><a href="#team">About</a></li>
                             <li><a href="#blog">Blog</a></li>
                             <li><a href="#contact">Contact</a></li>
+                            <li><a href="/src/admin.php">Admin</a></li>
                         </ul>
                     </nav>
 
@@ -399,7 +404,34 @@
                     </p>
                 </div>
                 <div class="pricing-cards row-center">
-                    <div class="pricing-card col-3">
+
+                    <?php
+                    $pricings = findAll();
+                    foreach ($pricings as $pricing) {
+
+
+                        echo '<div class="pricing-card col-3">',
+                        '<h4>'.$pricing["Name"].'</h4>',
+                        '<div class="price">',
+                           ' <p><sup>$</sup>'.$pricing["Price"].'<span>/ month</span></p>',
+                        '</div>',
+                        '<ul>',
+                           ' <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth</span> <span>'.$pricing["Bandwidth"].'GB</span></li>',
+                           ' <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace</span> <span>'.$pricing["Onlinespace"].'GB</span>',
+                           ' </li>',
+                           ' <li><span><i class="fa-regular fa-circle-check"></i> Support:'.$pricing["Support"].'</span> <span>Yes</span></li>',
+                           ' <li><span><i class="fa-regular fa-circle-check"></i> Domain</span> <span>'.$pricing["Domain"].'</span>',
+                           ' </li>',
+                           ' <li><span><i class="fa-regular fa-circle-check"></i> Hidden Fees</span> <span>'.$pricing["HiddenFees"].'</span></li>',
+                       ' </ul>',
+                       ' <div class="btn btn-white">Join Now</div>',
+                   ' </div>';
+                    }
+
+                    ?>
+
+                    
+                    <!-- <div class="pricing-card col-3">
                         <h4>Starter</h4>
                         <div class="price">
                             <p><sup>$</sup>9<span>/ month</span></p>
@@ -431,25 +463,9 @@
                             <li><span><i class="fa-regular fa-circle-check"></i> Hidden Fees</span> <span>No</span></li>
                         </ul>
                         <div class="btn">Join Now</div>
-                    </div>
-                    <div class="pricing-card col-3">
-                        <h4>Professional</h4>
-                        <div class="price">
-                            <p><sup>$</sup>29<span>/ month</span></p>
-                        </div>
-                        <ul>
-                            <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth</span> <span>3GB</span></li>
-                            <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace</span> <span>2GB</span>
-                            </li>
-                            <li><span><i class="fa-regular fa-circle-check"></i> Support:No</span> <span>Yes</span></li>
-                            <li><span><i class="fa-regular fa-circle-check"></i> Domain</span> <span>Unlimited</span>
-                            </li>
-                            <li><span><i class="fa-regular fa-circle-check"></i> Hidden Fees</span> <span>No</span></li>
-                        </ul>
-                        <div class="btn btn-white">Join Now</div>
-                    </div>
+                    </div> -->
 
-                </div>
+
                 </div>
             </section>
 
@@ -557,7 +573,9 @@
         </div>
         <div class="credits">
             <p>
-                <script>document.write(new Date().getFullYear())</script> &copy; Beep - Landing Page Template by 
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> &copy; Beep - Landing Page Template by
                 <a href="">Pichforest</a>
             </p>
 
@@ -570,19 +588,19 @@
 
     <script>
         var swiper = new Swiper(".mySwiper", {
-          spaceBetween: 30,
-          centeredSlides: true,
-          loop: true,
-          autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
         });
-      </script>
+    </script>
 </body>
 
 </html>
