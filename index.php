@@ -407,18 +407,29 @@ require_once('src/db-functions.php');
 
                     <?php
                     $pricings = findAll();
+
+                    // display all pricing cards
                     foreach ($pricings as $pricing) {
-                        $price = $pricing["Price"] * (1 - ($pricing["Sale"] / 100));
+
+
+                        $price = $pricing["Price"] * (1 - ($pricing["Sale"] / 100)); // apply sale on price
                         $onlineSpace = $pricing["Onlinespace"];
-                        $onlineSpaceUnit = 'MB';
-                        if ($pricing["Onlinespace"] >= 1000) {
+                        $onlineSpaceUnit = 'MB';// onlinespace default unit is MB but
+                        if ($pricing["Onlinespace"] >= 1000) { // if onlinespace is higher than 1000MB; set onlinespace unit to GB
                             $onlineSpaceUnit = 'GB';
                             $onlineSpace = $onlineSpace / 1000;
                         }
+
+
+
+                        // display Yes / No and the good icon (on the left) instead of raw datas from database
                         $support = ($pricing["Support"]) ? 'Yes' : 'No';
                         $HiddenFees = ($pricing["HiddenFees"]) ? 'Yes' : 'No';
                         $SupportMark = ($pricing["Support"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
                         $HiddenFeesMark = ($pricing["HiddenFees"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
+                        
+                        
+                        // display sales if there are any
                         $sales = ($pricing["Sale"] > 0) ? ' 
                         <div class="sale">
                         <p>'.$pricing["Sale"].'% sale</p>

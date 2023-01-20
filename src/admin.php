@@ -26,15 +26,15 @@
 
             <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
                 <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-                    <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Update Pricing</a></h1>
+                    <h1 style="color: var(--mainColor)">Update Pricing</h1>
                 </div>
                 <div class="formbg-outer" style="display:flex">
                     <?php
-
+                    //Create 3 forms with different id's in the action attribute
                     foreach ($pricings as $indexPricing => $pricing) {
                         echo '<div class="formbg">',
                         '<div class="formbg-inner padding-horizontal--48">',
-                        '<form id="stripe-login" action="functions.php?action=update&id=' . $pricing['id'] . '" method="POST">';
+                        '<form class="stripe-login" action="functions.php?action=update&id=' . $pricing['id'] . '" method="POST">';
 
                         $count = 0;
                     ?>
@@ -63,7 +63,7 @@
                         <div class="line">
 
                             <div class="field padding-bottom--24">
-                                <label for="Onlinespace">Onlinespace </label>
+                                <label for="Onlinespace">Onlinespace(MB)</label>
                                 <input type="number" id="Onlinespace" name="Onlinespace" value="<?= $pricing["Onlinespace"] ?>">
                             </div>
                             <div class="field padding-bottom--24">
