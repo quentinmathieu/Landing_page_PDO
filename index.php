@@ -408,6 +408,7 @@ require_once('src/db-functions.php');
                     <?php
                     $pricings = findAll();
                     foreach ($pricings as $pricing) {
+                        $price = $pricing["Price"]*(1-($pricing["Sale"]/100));
                         $onlineSpace = $pricing["Onlinespace"];
                         $onlineSpaceUnit = 'MB';
                         if ($pricing["Onlinespace"] >= 1000) {
@@ -423,16 +424,16 @@ require_once('src/db-functions.php');
                         echo '<div class="pricing-card col-3">',
                         '<h4>' . $pricing["Name"] . '</h4>',
                         '<div class="price">',
-                        ' <p><sup>$</sup>' . $pricing["Price"] . '<span>/ month</span></p>',
+                        ' <p><sup>$</sup>' . $price . '<span>/ month</span></p>',
                         '</div>',
                         '<ul>',
-                        ' <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth</span> <span>' . $pricing["Bandwidth"] . 'GB</span></li>',
-                        ' <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace</span> <span>' . $onlineSpace . $onlineSpaceUnit . '</span>',
+                        ' <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth:</span> <span>' . $pricing["Bandwidth"] . 'GB</span></li>',
+                        ' <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace:</span> <span>' . $onlineSpace . $onlineSpaceUnit . '</span>',
                         ' </li>',
                         ' <li><span><i class="fa-regular '.$SupportMark.'"></i> Support:</span> <span>'.$support.'</span></li>',
-                        ' <li><span><i class="fa-regular fa-circle-check"></i> Domain</span> <span>' . $pricing["Domain"] . '</span>',
+                        ' <li><span><i class="fa-regular fa-circle-check"></i> Domain:</span> <span>' . $pricing["Domain"] . '</span>',
                         ' </li>',
-                        ' <li><span><i class="fa-regular '.$HiddenFeesMark.'"></i> Hidden Fees</span> <span>' . $HiddenFees . '</span></li>',
+                        ' <li><span><i class="fa-regular '.$HiddenFeesMark.'"></i> Hidden Fees:</span> <span>' . $HiddenFees . '</span></li>',
                         ' </ul>',
                         ' <div class="btn btn-white">Join Now</div>',
                         ' </div>';
