@@ -429,7 +429,7 @@ require_once('src/db-functions.php');
                          <div class="pricing-card col-3"> <?= $sales ?>
                         <h4>  <?= $pricing["Name"] ?>  </h4>
                         <div class="price">
-                         <p><?= $price ?>  <span>/ month</span></p>
+                         <p><?= round($price,2) ?>  <span>/ month</span></p>
                         </div>
                         <ul>
                          <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth:</span> <span> <?= $pricing["Bandwidth"] ?> GB</span></li>
@@ -440,7 +440,7 @@ require_once('src/db-functions.php');
                          </li>
                          <li><span><i class="fa-regular   <?= $HiddenFeesMark ?> "></i> Hidden Fees:</span> <span> <?= $HiddenFees ?> </span></li>
                          </ul>
-                         <div class="btn btn-white">Join Now</div>
+                         <div class="btn btn-primary">Join Now</div>
                          </div>
                     <?php 
                 }
