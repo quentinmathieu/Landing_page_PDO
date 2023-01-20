@@ -408,20 +408,25 @@ require_once('src/db-functions.php');
                     <?php
                     $pricings = findAll();
                     foreach ($pricings as $pricing) {
-                        $price = $pricing["Price"]*(1-($pricing["Sale"]/100));
+                        $price = $pricing["Price"] * (1 - ($pricing["Sale"] / 100));
                         $onlineSpace = $pricing["Onlinespace"];
                         $onlineSpaceUnit = 'MB';
                         if ($pricing["Onlinespace"] >= 1000) {
                             $onlineSpaceUnit = 'GB';
                             $onlineSpace = $onlineSpace / 1000;
                         }
-                        $support = ( $pricing["Support"]) ? 'Yes' : 'No';
-                        $HiddenFees = ( $pricing["HiddenFees"]) ? 'Yes' : 'No';
-                        $SupportMark = ( $pricing["Support"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
-                        $HiddenFeesMark = ( $pricing["HiddenFees"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
+                        $support = ($pricing["Support"]) ? 'Yes' : 'No';
+                        $HiddenFees = ($pricing["HiddenFees"]) ? 'Yes' : 'No';
+                        $SupportMark = ($pricing["Support"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
+                        $HiddenFeesMark = ($pricing["HiddenFees"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
+                        $sales = ($pricing["Sale"] > 0) ? ' 
+                        <div class="sale">
+                        <p>20% sale</p>
+                        </div>'
+                            : null;
+
                         
-        
-                        echo '<div class="pricing-card col-3">',
+                        echo '<div class="pricing-card col-3">', $sales,
                         '<h4>' . $pricing["Name"] . '</h4>',
                         '<div class="price">',
                         ' <p><sup>$</sup>' . $price . '<span>/ month</span></p>',
@@ -430,10 +435,10 @@ require_once('src/db-functions.php');
                         ' <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth:</span> <span>' . $pricing["Bandwidth"] . 'GB</span></li>',
                         ' <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace:</span> <span>' . $onlineSpace . $onlineSpaceUnit . '</span>',
                         ' </li>',
-                        ' <li><span><i class="fa-regular '.$SupportMark.'"></i> Support:</span> <span>'.$support.'</span></li>',
+                        ' <li><span><i class="fa-regular ' . $SupportMark . '"></i> Support:</span> <span>' . $support . '</span></li>',
                         ' <li><span><i class="fa-regular fa-circle-check"></i> Domain:</span> <span>' . $pricing["Domain"] . '</span>',
                         ' </li>',
-                        ' <li><span><i class="fa-regular '.$HiddenFeesMark.'"></i> Hidden Fees:</span> <span>' . $HiddenFees . '</span></li>',
+                        ' <li><span><i class="fa-regular ' . $HiddenFeesMark . '"></i> Hidden Fees:</span> <span>' . $HiddenFees . '</span></li>',
                         ' </ul>',
                         ' <div class="btn btn-white">Join Now</div>',
                         ' </div>';
