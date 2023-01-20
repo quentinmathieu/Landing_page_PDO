@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `pricing` (
 -- Listage des données de la table landingpage.pricing : ~2 rows (environ)
 /*!40000 ALTER TABLE `pricing` DISABLE KEYS */;
 INSERT INTO `pricing` (`id`, `Name`, `Price`, `Sale`, `Bandwidth`, `Onlinespace`, `Support`, `HiddenFees`, `Domain`) VALUES
-	(1, 'Name', 0, 0, 0, 0, 0, 0, 'Unlimited'),
-	(2, 'Name', 0, 0, 0, 0, 0, 0, 'Unlimited'),
-	(3, 'Name', 0, 0, 0, 0, 0, 0, 'Unlimited');
+	(1, 'Starter', 9, 0, 1, 500, 0, 0, '1'),
+	(2, 'Advanced', 23.75, 20, 2, 1000, 1, 0, '3'),
+	(3, 'Professional', 29, 0, 3, 2000, 1, 0, 'Unlimited');
 /*!40000 ALTER TABLE `pricing` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
