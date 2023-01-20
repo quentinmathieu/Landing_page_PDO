@@ -421,28 +421,29 @@ require_once('src/db-functions.php');
                         $HiddenFeesMark = ($pricing["HiddenFees"]) ? 'fa-circle-check' : 'fa-regular fa-circle-xmark';
                         $sales = ($pricing["Sale"] > 0) ? ' 
                         <div class="sale">
-                        <p>20% sale</p>
+                        <p>'.$pricing["Sale"].'% sale</p>
                         </div>'
                             : null;
-
+                        ?>
                         
-                        echo '<div class="pricing-card col-3">', $sales,
-                        '<h4>' . $pricing["Name"] . '</h4>',
-                        '<div class="price">',
-                        ' <p><sup>$</sup>' . $price . '<span>/ month</span></p>',
-                        '</div>',
-                        '<ul>',
-                        ' <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth:</span> <span>' . $pricing["Bandwidth"] . 'GB</span></li>',
-                        ' <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace:</span> <span>' . $onlineSpace . $onlineSpaceUnit . '</span>',
-                        ' </li>',
-                        ' <li><span><i class="fa-regular ' . $SupportMark . '"></i> Support:</span> <span>' . $support . '</span></li>',
-                        ' <li><span><i class="fa-regular fa-circle-check"></i> Domain:</span> <span>' . $pricing["Domain"] . '</span>',
-                        ' </li>',
-                        ' <li><span><i class="fa-regular ' . $HiddenFeesMark . '"></i> Hidden Fees:</span> <span>' . $HiddenFees . '</span></li>',
-                        ' </ul>',
-                        ' <div class="btn btn-white">Join Now</div>',
-                        ' </div>';
-                    }
+                         <div class="pricing-card col-3"> <?= $sales ?>
+                        <h4>  <?= $pricing["Name"] ?>  </h4>
+                        <div class="price">
+                         <p><?= $price ?>  <span>/ month</span></p>
+                        </div>
+                        <ul>
+                         <li><span><i class="fa-regular fa-circle-check"></i> Bandwidth:</span> <span> <?= $pricing["Bandwidth"] ?> GB</span></li>
+                         <li><span><i class="fa-regular fa-circle-check"></i> Onlinespace:</span> <span>  <?= $onlineSpace ?>  <?= $onlineSpaceUnit  ?> </span>
+                         </li>
+                         <li><span><i class="fa-regular   <?= $SupportMark ?> "></i> Support:</span> <span>  <?= $support ?> </span></li>
+                         <li><span><i class="fa-regular fa-circle-check"></i> Domain:</span> <span> <?= $pricing["Domain"] ?> </span>
+                         </li>
+                         <li><span><i class="fa-regular   <?= $HiddenFeesMark ?> "></i> Hidden Fees:</span> <span> <?= $HiddenFees ?> </span></li>
+                         </ul>
+                         <div class="btn btn-white">Join Now</div>
+                         </div>
+                    <?php 
+                }
 
                     ?>
 
