@@ -19,7 +19,7 @@ case 'update':
         $dbDomain = filter_input(INPUT_POST, "Domain", FILTER_SANITIZE_SPECIAL_CHARS);
         $dbHiddenfees = filter_input(INPUT_POST, "HiddenFees",  FILTER_SANITIZE_SPECIAL_CHARS);
         
-        if (isset($dbName)  && isset( $dbPrice ) && isset( $dbSale ) && isset( $dbBandwidth ) && isset( $dbOnlinespace ) && isset( $dbSupport ) && isset( $dbHiddenfees ) && isset( $dbDomain)){
+        if ($dbName!=false  &&  $dbPrice !=false &&  $dbSale !=false &&  $dbBandwidth !=false &&  $dbOnlinespace !=false &&  $dbSupport !=false &&  $dbHiddenfees !=false &&  $dbDomain!=false){
             UpdatePricing($dbName ,  $dbPrice ,  $dbSale ,  $dbBandwidth ,  $dbOnlinespace ,  $dbSupport ,  $dbHiddenfees ,  $dbDomain, $id);
             $_SESSION['message'] = "<p>success</p>";
             header("Location:admin.php");
