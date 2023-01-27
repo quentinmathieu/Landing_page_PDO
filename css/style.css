@@ -12,18 +12,24 @@
     scroll-behavior: smooth;
 }
 
+a{
+    text-decoration: none;
+}
+
 .succes{
     width: 100%;
     text-align: center;
     background-color: aquamarine;
     color :  white;
     padding :  10px 0;
-    position: absolute;
+    position: fixed;
     top: 0;
+    left : 0
 }
 .error{
+    left : 0;
     padding :  10px 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     text-align: center;
@@ -753,6 +759,13 @@ section {
     font-weight: 400;
     color: rgb(143, 143, 143);
 }
+
+#pricing{
+    position: relative;
+    padding  :50px;
+}
+
+
 
 .pricing-cards {
     display: flex;

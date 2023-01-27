@@ -51,27 +51,38 @@ function findOneById($id)
     return $product;
 }
 
-function UpdatePricing($dbName ,  $dbPrice ,  $dbSale ,  $dbBandwidth ,  $dbOnlinespace ,  $dbSupport ,  $dbHiddenfees ,  $dbDomain, $id)
+function UpdatePricing($dbName,  $dbPrice,  $dbSale,  $dbBandwidth,  $dbOnlinespace,  $dbSupport,  $dbHiddenfees,  $dbDomain, $id)
 {
-   
+
     $db = connexion();
 
 
-        $sql = "UPDATE pricing
+    $sql = "UPDATE pricing
         Set Name = :Name, Price = :Price, Sale = :Sale, Bandwidth = :Bandwidth, Onlinespace=:Onlinespace, Support=:Support, HiddenFees=:HiddenFees, Domain=:Domain
         WHERE id= :id";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':Name', $dbName);
-        $stmt->bindValue(':Price', $dbPrice);
-        $stmt->bindValue(':Sale', $dbSale);
-        $stmt->bindValue(':Bandwidth', $dbBandwidth);
-        $stmt->bindValue(':Onlinespace', $dbOnlinespace);
-        $stmt->bindValue(':Support', $dbSupport);
-        $stmt->bindValue(':HiddenFees', $dbHiddenfees);
-        $stmt->bindValue(':Domain', $dbDomain);
-        $stmt->bindValue(':id', $id);
-        $stmt->execute();
-        return;
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':Name', $dbName);
+    $stmt->bindValue(':Price', $dbPrice);
+    $stmt->bindValue(':Sale', $dbSale);
+    $stmt->bindValue(':Bandwidth', $dbBandwidth);
+    $stmt->bindValue(':Onlinespace', $dbOnlinespace);
+    $stmt->bindValue(':Support', $dbSupport);
+    $stmt->bindValue(':HiddenFees', $dbHiddenfees);
+    $stmt->bindValue(':Domain', $dbDomain);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+}
+
+function incrementOrder($id)
+{
+    $db = connexion();
+
+    $sql = "UPDATE pricing
+    Set Orders = Orders+1
+    WHERE id= :id";
     
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute(['id'=>$id]);
 }
