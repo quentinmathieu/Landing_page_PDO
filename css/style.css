@@ -17,24 +17,28 @@ a{
 }
 
 .succes{
-    width: 100%;
-    text-align: center;
+    
     background-color: aquamarine;
-    color :  white;
-    padding :  10px 0;
-    position: fixed;
-    top: 0;
-    left : 0
+   
 }
 .error{
+   
+    background-color: rgb(255, 127, 127);
+}
+
+.message{
     left : 0;
     padding :  10px 0;
     position: fixed;
     top: 0;
     width: 100%;
     text-align: center;
-    background-color: rgb(255, 127, 127);
     color :  white;
+    transition: top 1s;
+}
+
+.disappear{
+    top : -75px;
 }
 
 main {

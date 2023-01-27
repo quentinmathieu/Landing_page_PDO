@@ -587,6 +587,7 @@ require_once('src/db-functions.php');
     <!-- Jaascripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/message.js"></script>
 
     <script>
         var swiper = new Swiper(".mySwiper", {
@@ -602,6 +603,9 @@ require_once('src/db-functions.php');
                 clickable: true,
             },
         });
+
+
+        
     </script>
 </body>
 

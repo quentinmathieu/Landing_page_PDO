@@ -35,11 +35,11 @@ switch ($_GET['action']) {
                 ($dbHiddenfees !== false  && $dbHiddenfees != null) &&  $dbDomain
             ) {
                 UpdatePricing($dbName,  $dbPrice,  $dbSale,  $dbBandwidth,  $dbOnlinespace,  $dbSupport,  $dbHiddenfees,  $dbDomain, $id);
-                $_SESSION['message'] = "<p class='succes'>success</p>";
+                $_SESSION['message'] = "<p class='succes message'>success</p>";
                 header("Location:admin.php");
                 die;
             } else {
-                $_SESSION['message'] = "<p class='error'>ERROR</p>";
+                $_SESSION['message'] = "<p class='error message'>ERROR</p>";
                 header("Location:admin.php");
             }
         }
@@ -47,11 +47,11 @@ switch ($_GET['action']) {
     case 'addOrder':
         if (isset($id)) {
             incrementOrder($id);
-            $_SESSION['message'] = "<p class='succes'>success</p>";
+            $_SESSION['message'] = "<p class='succes message'>success</p>";
             header("Location:../index.php#pricing");
         }
         else{
-            $_SESSION['message'] = "<p class='error'>ERROR</p>";
+            $_SESSION['message'] = "<p class='error message'>ERROR</p>";
             header("Location:../index.php#pricing");
 
 

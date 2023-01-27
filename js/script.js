@@ -14,5 +14,3 @@ circles.forEach(circle => {
     }); 
 });
 
-
-
