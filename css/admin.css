@@ -8,6 +8,7 @@
   width: 100%;
 }
 
+
 h1 {
   letter-spacing: -1px;
   text-align: center;
@@ -89,27 +90,27 @@ a {
 }
 
 .padding-top--64 {
-  padding-top: 64px;
+  padding-top: 42px;
 }
 
 .padding-top--24 {
-  padding-top: 24px;
+  padding-top: 16px;
 }
 
 .padding-top--48 {
-  padding-top: 48px;
+  padding-top: 30px;
 }
 
 .padding-bottom--24 {
-  padding-bottom: 24px;
+  padding-bottom: 16px;
 }
 
 .padding-horizontal--48 {
-  padding: 48px;
+  padding: 30px;
 }
 
 .padding-bottom--15 {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 

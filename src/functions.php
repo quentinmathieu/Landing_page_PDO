@@ -35,7 +35,7 @@ switch ($_GET['action']) {
                 ($dbHiddenfees !== false  && $dbHiddenfees != null) &&  $dbDomain
             ) {
                 UpdatePricing($dbName,  $dbPrice,  $dbSale,  $dbBandwidth,  $dbOnlinespace,  $dbSupport,  $dbHiddenfees,  $dbDomain, $id);
-                $_SESSION['message'] = "<p class='succes message'>success</p>";
+                $_SESSION['message'] = "<p class='succes message'>'$dbName' updated</p>";
                 header("Location:admin.php");
                 die;
             } else {
@@ -45,9 +45,10 @@ switch ($_GET['action']) {
         }
         break;
     case 'addOrder':
+        //increment order by 1 when the user click on "join now"
         if (isset($id)) {
             incrementOrder($id);
-            $_SESSION['message'] = "<p class='succes message'>success</p>";
+            $_SESSION['message'] = "<p class='succes message'>Success</p>";
             header("Location:../index.php#pricing");
         }
         else{

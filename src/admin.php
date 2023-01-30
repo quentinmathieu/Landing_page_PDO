@@ -103,14 +103,13 @@
             <div id="navContainer">
                 <nav class="navAdmin">
                     <a href="../index.php" class="navBtn" style="padding:13px">Index</a>
-                    <a href="panier.php"class="navBtn fa-solid fa-basket-shopping" style="color:white; text-align:center;vertical-align: bottom; display:flex;align-items:center"></a>
 
                 </nav>
             </div>
         </div>
     </div>
     </div>
-    <script src="js/message.js"></script>
+    <script src="../js/message.js"></script>
 </body>
 
 </html>

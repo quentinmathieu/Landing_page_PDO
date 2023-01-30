@@ -28,15 +28,16 @@ CREATE TABLE IF NOT EXISTS `pricing` (
   `Support` tinyint(4) NOT NULL DEFAULT '0',
   `HiddenFees` tinyint(4) NOT NULL DEFAULT '0',
   `Domain` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'Unlimited',
+  `Orders` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Listage des données de la table landingpage.pricing : ~2 rows (environ)
+-- Listage des données de la table landingpage.pricing : ~3 rows (environ)
 /*!40000 ALTER TABLE `pricing` DISABLE KEYS */;
-INSERT INTO `pricing` (`id`, `Name`, `Price`, `Sale`, `Bandwidth`, `Onlinespace`, `Support`, `HiddenFees`, `Domain`) VALUES
-	(1, 'Starter', 9, 0, 1, 500, 0, 0, '1'),
-	(2, 'Advanced', 23.75, 20, 2, 1000, 1, 0, '3'),
-	(3, 'Professional', 29, 0, 3, 2000, 1, 0, 'Unlimited');
+INSERT INTO `pricing` (`id`, `Name`, `Price`, `Sale`, `Bandwidth`, `Onlinespace`, `Support`, `HiddenFees`, `Domain`, `Orders`) VALUES
+	(1, 'Starter', 18, 0, 1, 500, 0, 0, '1', 38),
+	(2, 'Advanced', 23.75, 20, 2, 1000, 0, 0, '3', 12),
+	(3, 'Professional', 29, 0, 3, 2000, 1, 0, 'Unlimited', 6);
 /*!40000 ALTER TABLE `pricing` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
