@@ -17,6 +17,20 @@
 CREATE DATABASE IF NOT EXISTS `landingpage` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
 USE `landingpage`;
 
+-- Listage de la structure de la table landingpage. email
+CREATE TABLE IF NOT EXISTS `email` (
+  `id` int(55) NOT NULL AUTO_INCREMENT,
+  `email` varchar(250) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Listage des données de la table landingpage.email : ~0 rows (environ)
+/*!40000 ALTER TABLE `email` DISABLE KEYS */;
+INSERT INTO `email` (`id`, `email`) VALUES
+	(1, 'test'),
+	(2, 'test@test.dr');
+/*!40000 ALTER TABLE `email` ENABLE KEYS */;
+
 -- Listage de la structure de la table landingpage. pricing
 CREATE TABLE IF NOT EXISTS `pricing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -35,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `pricing` (
 -- Listage des données de la table landingpage.pricing : ~3 rows (environ)
 /*!40000 ALTER TABLE `pricing` DISABLE KEYS */;
 INSERT INTO `pricing` (`id`, `Name`, `Price`, `Sale`, `Bandwidth`, `Onlinespace`, `Support`, `HiddenFees`, `Domain`, `Orders`) VALUES
-	(1, 'Starter', 18, 0, 1, 500, 0, 0, '1', 38),
-	(2, 'Advanced', 23.75, 20, 2, 1000, 0, 0, '3', 12),
+	(1, 'Starter', 18, 0, 1, 500, 0, 0, '1', 39),
+	(2, 'Advanced', 23.75, 20, 2, 1000, 0, 0, '3', 13),
 	(3, 'Professional', 29, 0, 3, 2000, 1, 0, 'Unlimited', 6);
 /*!40000 ALTER TABLE `pricing` ENABLE KEYS */;
 

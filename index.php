@@ -77,10 +77,10 @@ require_once('src/db-functions.php');
                         <h1>We are StartUp<br>Creative Beep Agency</h1>
                         <p>Carefully crafted after analysing the needs of different industries and the design achieves a
                             great balance between purpose & presentation</p>
-                        <form action="">
+                        <form action="src/functions.php?action=email" method="POST">
                             <div class="news">
-                                <input placeholder="Enter your email" class="news-text" type="text">
-                                <button class="btn">Subscribe</button>
+                                <input placeholder="Enter your email" class="news-text" type="email" name="email">
+                                <input type="submit" name="submit" class="btn" value ="Subscribe">
                             </div>
                         </form>
                     </div>

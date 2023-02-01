@@ -86,3 +86,15 @@ function incrementOrder($id)
     $stmt = $db->prepare($sql);
     $stmt->execute(['id'=>$id]);
 }
+
+
+function insertEmail($email)
+{
+    $db = connexion();
+
+    $sql = "INSERT INTO email (email) VALUES (:email)";
+    
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute(['email'=>$email]);
+}

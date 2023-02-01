@@ -7,6 +7,10 @@ require('db-functions.php');
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 
 switch ($_GET['action']) {
+    case 'email':
+        $email = filter_input(INPUT_POST, "email",FILTER_SANITIZE_EMAIL);
+        insertEmail($email);
+        break;
     case 'update':
         if (isset($_POST['submit'])) {
 
