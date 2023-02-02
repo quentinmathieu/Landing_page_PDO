@@ -13,12 +13,12 @@
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none;  
 }
 
 .succes{
     
-    background-color: aquamarine;
+    background-color: rgba(98, 236, 190, 0.84);
    
 }
 .error{

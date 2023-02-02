@@ -8,8 +8,18 @@ $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 
 switch ($_GET['action']) {
     case 'email':
-        $email = filter_input(INPUT_POST, "email",FILTER_SANITIZE_EMAIL);
-        insertEmail($email);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+        if (isset($email)) {
+            insertEmail($email);
+            $_SESSION['message'] = "<p class='succes message'>Success : $email added to the newsletter</p>";
+        }
+        else{
+            $_SESSION['message'] = "<p class='error message'>ERROR : Bad email</p>";
+
+        }
+        
+        header("Location:../index.php");
+        die;
         break;
     case 'update':
         if (isset($_POST['submit'])) {
@@ -54,12 +64,9 @@ switch ($_GET['action']) {
             incrementOrder($id);
             $_SESSION['message'] = "<p class='succes message'>Success</p>";
             header("Location:../index.php#pricing");
-        }
-        else{
+        } else {
             $_SESSION['message'] = "<p class='error message'>ERROR</p>";
             header("Location:../index.php#pricing");
-
-
         }
         break;
 }
